@@ -16,13 +16,49 @@ Erc 223: allows for safe transfer of tokens to wallets and cotracts in order to 
 
 
 It has a struct that stores the details of the event 
->>image link
+
+```
+struct EventData{
+        string name;
+        string date;
+        string location;
+        uint24 participantLimit;
+        uint8 state;        
+        uint24 registered;
+        uint24 attended;
+        address organiser;
+        // 0: Not created
+        // 1: Created
+        // 2: Concluded
+        // 3: Cancelled
+        uint256 requiredStake;
+        uint256 totalStaked;
+        uint256 payout;
+    }
+    
+ ```
 
 
 ### Number1
+
+```
+ function initContract(address _tokenManager, address _rewardManager, uint256 _creationCost, uint256 _maxAttendanceBonus) public onlyAdmin {
+        tokenManager = _tokenManager;
+        rewardManager = _rewardManager;
+        creationCost = _creationCost;
+        maxAttendanceBonus = _maxAttendanceBonus;
+    }
+ ```
+
 Function InitContract() can only be used by the admin, this is used to set the token manager, Rewards manager, Creation cost and the maximum bonus that can be achieved by attending.
 
+
 ### Number2
+![updateStake](https://user-images.githubusercontent.com/74251327/162555790-7c235ff7-816f-47ca-8415-e43fb8bd1a1f.png)
+
+
+
+
 Function UpdateStake() This is used to update the creation cost and maximum Bonus attainable. 
 
 ### Number3
